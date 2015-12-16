@@ -9,6 +9,5 @@ public interface UserService {
 	
 	List<User> findAllUsers();
 	Result addUser(User user);
-	User updateUser(User user);
-	Boolean deleteUser(User user);
+	Result authenticateUser(String userName, String password);
 }

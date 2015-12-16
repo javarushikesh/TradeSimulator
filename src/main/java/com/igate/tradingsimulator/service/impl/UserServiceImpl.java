@@ -46,12 +46,21 @@ public class UserServiceImpl extends BaseService implements UserService {
 	}
 
 	@Override
-	public User updateUser(User user) {
-		return null;
+	public Result authenticateUser(String userName, String password) {
+		Result result = new Result();
+		User existingUser = getUserDAO().getUserByUserName(userName);
+		if(existingUser == null || existingUser.getId() == 0){
+			result.setStatus(failure);
+			result.setMessage(getMessageSource().getMessage("userName.doesnotexists", new Object[]{userName}, null));
+		}else if(existingUser != null || existingUser.getId() > 0){
+			if(existingUser.getUsername().equals(userName) && existingUser.getPassword().equals(password)){
+				result.setStatus(success);
+			}else{
+				result.setStatus(failure);
+				result.setMessage(getMessageSource().getMessage("login.failed", new Object[]{}, null));
+			}
+		}
+		return result;
 	}
 
-	@Override
-	public Boolean deleteUser(User user) {
-		return true;
-	}
 }

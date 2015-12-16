@@ -2,7 +2,7 @@ package com.igate.tradingsimulator.vo;
 
 import java.io.Serializable;
 
-public class UserVO extends UserLogin implements Serializable{
+public class UserVO extends UserLoginVO implements Serializable{
 
 	private static final long serialVersionUID = 4102106874354440776L;
 	

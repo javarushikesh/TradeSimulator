@@ -2,7 +2,7 @@ package com.igate.tradingsimulator.vo;
 
 import java.io.Serializable;
 
-public class UserLogin implements Serializable{
+public class UserLoginVO implements Serializable{
 	private static final long serialVersionUID = -3152470037193036375L;
 	private String username;
 	private String password;
