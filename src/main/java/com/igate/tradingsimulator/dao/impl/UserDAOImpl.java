@@ -26,16 +26,6 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
 	}
 
 	@Override
-	public User updateUser(User user) {
-		return null;
-	}
-
-	@Override
-	public boolean deleteUser(User user) {
-		return true;
-	}
-
-	@Override
 	@SuppressWarnings("unchecked")
 	public User getUserByUserName(String userName) {
 		Criteria criteria = getSession().createCriteria(User.class);

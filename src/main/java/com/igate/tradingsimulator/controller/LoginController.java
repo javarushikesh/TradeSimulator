@@ -25,7 +25,8 @@ public class LoginController {
 		this.userService = userService;
 	}
 
-	@CrossOrigin(origins = "http://localhost:8000")
+	//@CrossOrigin(origins = "http://mumd14269.igatecorp.com:8000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/authenticate" , method = RequestMethod.POST)
 	public Result authenticate(@RequestBody UserLoginVO userloginvo){
 		Result loginResult = new Result();

@@ -27,19 +27,20 @@ public class RegistrationController {
 		this.userService = userService;
 	}
 
-	@CrossOrigin(origins = "http://localhost:8000")
+	//@CrossOrigin(origins = "http://mumd14269.igatecorp.com:8000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/register" , method = RequestMethod.POST)
 	public Result register(@RequestBody UserVO uservo){
 		Result registrationResult = new Result();
-		
 		User user = UserMapping.mapFormToDTO(uservo);
 		registrationResult = getUserService().addUser(user);
 		
 		return registrationResult;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8000")
-	@RequestMapping(value="/listusers" , method = RequestMethod.POST)
+	//@CrossOrigin(origins = "http://mumd14269.igatecorp.com:8000")
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value="/listusers" , method = {RequestMethod.POST, RequestMethod.GET})
 	public Result listall(@RequestBody UserVO uservo){
 		Result registrationResult = new Result();
 		
