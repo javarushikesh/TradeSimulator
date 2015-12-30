@@ -19,8 +19,8 @@
 		<property name="viewLimit" column="VIEWLIMIT" type="float" />
 		<property name="orderValidity" column="ORDERVALIDITY" type="string" />
 		<property name="stopLossTriggerPrice" column="STOPLOSSTRIGGERPRICE" type="float" />
-		<property name="creationDate" column="CREATEDON" type="date" />
-		<property name="executionDate" column="EXECUTEDON" type="date" />
+		<property name="creationDate" column="CREATEDON" type="timestamp" />
+		<property name="executionDate" column="EXECUTEDON" type="timestamp" />
 		<property name="executionStatus" column="EXECUTIONSTATUS" type="string" />
 		
 		<many-to-one name="user" class="com.igate.tradingsimulator.domain.User"

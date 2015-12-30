@@ -1,10 +1,20 @@
 package com.igate.tradingsimulator.vo;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class TradeVO implements Serializable{
+public class TradeVO extends Result implements Serializable{
 
 	private static final long serialVersionUID = -247542625635244052L;
+	
+	private int id;
+	private Date transactionDate;
+	private float price;
+	private float tradeValue;
+	private float brokerage;
+	private float taxes;
+	private int contractNote;
+	private Date orderDate;
 	
 	private String username;
 	private String action;
@@ -17,7 +27,55 @@ public class TradeVO implements Serializable{
 	private float viewLimit;
 	private String orderValidity;
 	private float stopLossTriggerPrice;
-
+	
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+	public float getTradeValue() {
+		return tradeValue;
+	}
+	public void setTradeValue(float tradeValue) {
+		this.tradeValue = tradeValue;
+	}
+	public float getBrokerage() {
+		return brokerage;
+	}
+	public void setBrokerage(float brokerage) {
+		this.brokerage = brokerage;
+	}
+	public float getTaxes() {
+		return taxes;
+	}
+	public void setTaxes(float taxes) {
+		this.taxes = taxes;
+	}
+	public int getContractNote() {
+		return contractNote;
+	}
+	public void setContractNote(int contractNote) {
+		this.contractNote = contractNote;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Date getTransactionDate() {
+		return transactionDate;
+	}
+	public void setTransactionDate(Date transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
 	public String getStock() {
 		return stock;
 	}

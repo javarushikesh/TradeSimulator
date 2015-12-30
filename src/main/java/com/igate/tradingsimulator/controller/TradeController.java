@@ -2,6 +2,9 @@ package com.igate.tradingsimulator.controller;
 
 import static com.igate.tradingsimulator.util.AppConstants.success;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +16,6 @@ import com.igate.tradingsimulator.domain.TradeTxn;
 import com.igate.tradingsimulator.mappingutils.TradeMapping;
 import com.igate.tradingsimulator.service.TradeService;
 import com.igate.tradingsimulator.service.UserService;
-import com.igate.tradingsimulator.vo.Result;
 import com.igate.tradingsimulator.vo.TradeVO;
 
 @RestController
@@ -43,11 +45,25 @@ public class TradeController {
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/submitTrade" , method = RequestMethod.POST)
-	public Result submitTrade(@RequestBody TradeVO tradevo){
-		Result result = new Result();
+	public TradeVO submitTrade(@RequestBody TradeVO tradevo){
 		TradeTxn tradeTxn = TradeMapping.mapTradeData(tradevo); 
 		tradeTxn = getTradeService().saveTrade(tradeTxn);
-		result.setStatus(success);
-		return result;
+		TradeVO confirmTrade = TradeMapping.mapDBTradeToView(tradeTxn); 
+		confirmTrade.setStatus(success);
+		return confirmTrade;
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value="/listOrderBook" , method = RequestMethod.POST)
+	public List<TradeVO> listOrderBookTrades(@RequestBody String userName){
+		List<TradeTxn> orderBookTradesFromDB = getTradeService().getAllOrderBookTrades(userName);
+		return TradeMapping.mapDBTradesToView(orderBookTradesFromDB);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value="/listTradeBook" , method = RequestMethod.POST)
+	public List<TradeVO> listTradeBookTrades(@RequestBody String userName){
+		List<TradeTxn> tradeBookTradesFromDB = getTradeService().getAllTradeBookTrades(userName);
+		return TradeMapping.mapDBTradesToView(tradeBookTradesFromDB);
 	}
 }
