@@ -17,6 +17,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>hbm/Users.hbm.xml</value>
+				<value>hbm/TradeTxn.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

@@ -10,6 +10,14 @@
 	
 	<bean id="authDAO" class="com.igate.tradingsimulator.dao.impl.TradeSimulatorAuthenticationDAOImpl">
 		<property name="userDAO" ref="userDAO"/>
-	</bean>        
+	</bean>
+	
+	<bean id="stocksDAO" class="com.igate.tradingsimulator.dao.impl.StocksDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="tradeDAO" class="com.igate.tradingsimulator.dao.impl.TradeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>        	
 
 </beans>
