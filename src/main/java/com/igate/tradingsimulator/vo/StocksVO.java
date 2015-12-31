@@ -6,21 +6,30 @@ public class StocksVO implements Serializable{
 
 	private static final long serialVersionUID = -7169044198372183130L;
 	
-	private String label;
-	private String value;
+
+
+	private String name;
+	private String abbreviation;
 	
-	public String getLabel() {
-		return label;
+	public String getName() {
+		return name;
 	}
-	public void setLabel(String label) {
-		this.label = label;
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getValue() {
-		return value;
+
+
+	public String getAbbreviation() {
+		return abbreviation;
 	}
-	public void setValue(String value) {
-		this.value = value;
+
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
