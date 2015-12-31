@@ -18,6 +18,7 @@
 			<list>
 				<value>hbm/Users.hbm.xml</value>
 				<value>hbm/TradeTxn.hbm.xml</value>
+				<value>hbm/Stocks.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

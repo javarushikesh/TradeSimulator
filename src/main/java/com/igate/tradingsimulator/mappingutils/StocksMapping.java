@@ -13,8 +13,8 @@ public class StocksMapping {
 		StocksVO stkvo;
 		for(Stocks stock:dbStocks){
 			stkvo = new StocksVO();
-			stkvo.setLabel(stock.getStockDesc());
-			stkvo.setValue(stock.getStockId());
+			stkvo.setName(stock.getStockDesc());
+			stkvo.setAbbreviation(stock.getStockId());
 			
 			stocksList.add(stkvo);
 		}
