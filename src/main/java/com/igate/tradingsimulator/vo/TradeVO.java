@@ -15,6 +15,7 @@ public class TradeVO extends Result implements Serializable{
 	private float taxes;
 	private int contractNote;
 	private Date orderDate;
+	private int count;
 	
 	private String username;
 	private String action;
@@ -28,6 +29,12 @@ public class TradeVO extends Result implements Serializable{
 	private String orderValidity;
 	private float stopLossTriggerPrice;
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public Date getOrderDate() {
 		return orderDate;
 	}

@@ -2,11 +2,15 @@ package com.igate.tradingsimulator.mappingutils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.igate.tradingsimulator.domain.TradeTxn;
 import com.igate.tradingsimulator.domain.User;
 import com.igate.tradingsimulator.vo.TradeVO;
+
+import static com.igate.tradingsimulator.util.AppConstants.BUY;
 
 public class TradeMapping {
 	
@@ -52,6 +56,25 @@ public class TradeMapping {
 			TradeVO tradevo = mapDBTradeToView(dbTrade);
 			orderBookTrades.add(tradevo);
 		}
+		return orderBookTrades;
+	}
+	
+	public static List<TradeVO> getPositions(List<TradeTxn> dbTrades){
+		Map<String,TradeVO> positions = new HashMap<String,TradeVO>(); 
+		for(TradeTxn dbTrade : dbTrades){
+			if(BUY.equals(dbTrade.getAction())){
+				TradeVO tradevo = mapDBTradeToView(dbTrade);
+				if(positions.containsKey(tradevo.getStock())){
+					TradeVO trade = positions.get(tradevo.getStock());
+					trade.setCount(trade.getCount() + dbTrade.getQuantity());
+					positions.put(tradevo.getStock(), trade);
+				}else{
+					tradevo.setCount(tradevo.getQuantity());
+					positions.put(tradevo.getStock(), tradevo);
+				}
+			}
+		}
+		List<TradeVO> orderBookTrades = new ArrayList<TradeVO>(positions.values());		
 		return orderBookTrades;
 	}
 

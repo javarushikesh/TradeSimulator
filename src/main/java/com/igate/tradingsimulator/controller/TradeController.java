@@ -2,7 +2,6 @@ package com.igate.tradingsimulator.controller;
 
 import static com.igate.tradingsimulator.util.AppConstants.success;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +65,11 @@ public class TradeController {
 		List<TradeTxn> tradeBookTradesFromDB = getTradeService().getAllTradeBookTrades(userName);
 		return TradeMapping.mapDBTradesToView(tradeBookTradesFromDB);
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value="/getPositions" , method = RequestMethod.POST)
+	public List<TradeVO> getUserPositions(@RequestBody String userName){
+		List<TradeTxn> tradeBookTradesFromDB = getTradeService().getAllTradeBookTrades(userName);
+		return TradeMapping.getPositions(tradeBookTradesFromDB);
+	}	
 }
