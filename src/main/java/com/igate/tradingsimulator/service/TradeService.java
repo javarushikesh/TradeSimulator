@@ -9,4 +9,5 @@ public interface TradeService {
 	TradeTxn saveTrade(TradeTxn tradeTxn);
 	List<TradeTxn> getAllOrderBookTrades(String userName);
 	List<TradeTxn> getAllTradeBookTrades(String userName);
+	void matchTrade();
 }

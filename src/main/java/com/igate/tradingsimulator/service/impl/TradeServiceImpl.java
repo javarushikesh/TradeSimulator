@@ -42,14 +42,21 @@ public class TradeServiceImpl extends BaseService implements TradeService{
 
 	@Override
 	public List<TradeTxn> getAllOrderBookTrades(String userName) {
+		matchTrade();
 		User tradingUser = getUserDAO().getUserByUserName(userName);
 		return getTradeDAO().getTradesForUser(tradingUser.getId(), CHAR_N);
 	}
 	
 	@Override
 	public List<TradeTxn> getAllTradeBookTrades(String userName) {
+		matchTrade();
 		User tradingUser = getUserDAO().getUserByUserName(userName);
 		return getTradeDAO().getTradesForUser(tradingUser.getId(), CHAR_Y);
+	}
+
+	@Override
+	public void matchTrade() {
+		getTradeDAO().getMatchingTrades();
 	}
 
 }

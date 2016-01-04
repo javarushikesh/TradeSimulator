@@ -115,4 +115,15 @@ public class TradeTxn implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	@Override
+	public String toString() {
+		return "TradeTxn [id=" + id + ", user=" + user.toString() + ", action=" + action
+				+ ", stock=" + stock + ", product=" + product + ", exchange="
+				+ exchange + ", quantity=" + quantity + ", orderType="
+				+ orderType + ", limitPrice=" + limitPrice + ", viewLimit="
+				+ viewLimit + ", orderValidity=" + orderValidity
+				+ ", stopLossTriggerPrice=" + stopLossTriggerPrice
+				+ ", creationDate=" + creationDate + ", executionDate="
+				+ executionDate + ", executionStatus=" + executionStatus + "]";
+	}
 }
